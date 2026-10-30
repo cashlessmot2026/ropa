@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { registerSW } from "virtual:pwa-register";
+import "@fontsource-variable/bricolage-grotesque/standard.css";
+import "./styles.css";
 import App from "./App.jsx";
 
 registerSW({ immediate: true });

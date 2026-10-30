@@ -26,8 +26,8 @@ export default defineConfig(({ mode }) => {
           scope: base,
           display: "standalone",
           orientation: "portrait",
-          background_color: "#0a0a0f",
-          theme_color: "#0a0a0f",
+          background_color: "#1b1020",
+          theme_color: "#1b1020",
           icons: [
             { src: "icons/icon-192.png", sizes: "192x192", type: "image/png" },
             { src: "icons/icon-512.png", sizes: "512x512", type: "image/png" },
@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
           ],
         },
         workbox: {
-          globPatterns: ["**/*.{js,css,html,svg,png,webp,jpg}"],
+          globPatterns: ["**/*.{js,css,html,svg,png,webp,jpg,woff2}"],
           // Nunca cachear llamadas a Supabase ni a Decart: son datos vivos / sesiones.
           navigateFallbackDenylist: [/^\/api\//],
           runtimeCaching: [
