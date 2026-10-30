@@ -6,8 +6,11 @@ import { decartTokenDevPlugin } from "./server/decart-token-dev.js";
 export default defineConfig(({ mode }) => {
   // Variables sin prefijo VITE_ (ej. DECART_API_KEY) solo existen en Node, nunca llegan al bundle.
   const env = loadEnv(mode, process.cwd(), "");
+  // GitHub Pages sirve la app en /ropa/; en local va en la raíz.
+  const base = env.BASE_PATH || "/";
 
   return {
+    base,
     plugins: [
       react(),
       decartTokenDevPlugin(env.DECART_API_KEY),
@@ -19,8 +22,8 @@ export default defineConfig(({ mode }) => {
           short_name: "Ropa",
           description: "Tienda de ropa, gorras y zapatos con probador virtual en tiempo real.",
           lang: "es",
-          start_url: "/",
-          scope: "/",
+          start_url: base,
+          scope: base,
           display: "standalone",
           orientation: "portrait",
           background_color: "#0a0a0f",
@@ -37,7 +40,7 @@ export default defineConfig(({ mode }) => {
           navigateFallbackDenylist: [/^\/api\//],
           runtimeCaching: [
             {
-              urlPattern: ({ url }) => url.pathname.startsWith("/products/"),
+              urlPattern: ({ url }) => url.pathname.includes("/products/"),
               handler: "CacheFirst",
               options: { cacheName: "product-images", expiration: { maxEntries: 200 } },
             },
