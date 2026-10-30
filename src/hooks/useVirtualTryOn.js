@@ -12,7 +12,8 @@ function cameraConstraints(facingMode, portrait) {
     audio: false,
     video: {
       facingMode,
-      frameRate: { ideal: TRYON_MODEL.fps },
+      // El SDK puede definir fps como número o como restricción ({ ideal, max }).
+      frameRate: typeof TRYON_MODEL.fps === "number" ? { ideal: TRYON_MODEL.fps } : TRYON_MODEL.fps,
       width: { ideal: swap ? TRYON_MODEL.height : TRYON_MODEL.width },
       height: { ideal: swap ? TRYON_MODEL.width : TRYON_MODEL.height },
     },
