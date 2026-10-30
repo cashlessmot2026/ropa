@@ -57,7 +57,7 @@ export default function App() {
         <input
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
-          placeholder="Prompt libre: Add a white bucket hat to the person's head"
+          placeholder="Prompt libre: Add a white bucket hat to the outfit."
           style={{ flex: 1 }}
           disabled={!live}
         />

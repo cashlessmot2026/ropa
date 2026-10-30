@@ -164,7 +164,7 @@ export function useVirtualTryOn({ fast = false, portrait = isMobile() } = {}) {
     [start],
   );
 
-  // Prueba libre por texto, ej. "Add a white bucket hat to the person's head".
+  // Prueba libre por texto, ej. "Add a white bucket hat to the outfit."
   const tryPrompt = useCallback(async (prompt) => {
     const rt = rtRef.current;
     if (!rt) return;
