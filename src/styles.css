@@ -242,7 +242,7 @@ input {
 
 /* ---------- Espejo con bombillas ---------- */
 .mirror {
-  --bulb-state: 0.25;
+  --bulb-state: 0.35;
   position: relative;
   padding: 18px;
   border-radius: calc(var(--radius-mirror) + 14px);
@@ -457,8 +457,9 @@ input {
 .tabs {
   display: flex;
   gap: 8px;
-  margin: 0 calc(var(--gutter) * -1) 18px;
-  padding: 4px var(--gutter) 10px;
+  /* Padding generoso para que el brillo de la pestaña activa no se recorte con el scroll. */
+  margin: -14px calc(var(--gutter) * -1) 4px;
+  padding: 16px var(--gutter) 20px;
   overflow-x: auto;
   scroll-snap-type: x proximity;
   scrollbar-width: none;
@@ -576,6 +577,21 @@ input {
   margin-top: auto;
   min-height: 40px;
   font-size: var(--step--1);
+}
+
+/* En la grilla los botones van "apagados" (solo el aro de luz) y se encienden al tocarlos,
+   así el único botón completamente iluminado de entrada es "Encender probador". */
+.card .btn:not(.btn--fuchsia) {
+  --fill: rgb(255 197 107 / 0.06);
+  --ink: var(--bulb-soft);
+  --glow: 0 0 0 1px rgb(255 197 107 / 0.45);
+}
+
+.card .btn:not(.btn--fuchsia):hover,
+.card .btn:not(.btn--fuchsia):focus-visible {
+  --fill: linear-gradient(180deg, var(--bulb-soft), var(--bulb));
+  --ink: var(--plum-900);
+  --glow: var(--glow-bulb);
 }
 
 .skeleton {
